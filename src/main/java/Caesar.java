@@ -2,23 +2,74 @@ import java.util.Scanner;
 
 public class Caesar {
     public static String encryptCaesar(String message) {
-        return message;
-        // REPLACE THIS WITH YOUR CODE
-    }
+        char ch = ' ';
+		String str1 = "";
+		for(int i = 0; i < message.length(); i++) {
+            if((message.charAt(i)>= 'A' && message.charAt(i)<= 'Z') || (message.charAt(i)>= 'a' && message.charAt(i)<= 'z')){
+            ch = (char) (message.charAt(i)+3);
+            if (ch>'Z'&&ch<'a'||(ch>'z')) {
+            	ch-=26;
+            }
+			str1 = str1 + ch;			
+            }else {           
+            str1 = str1 + message.charAt(i);
+			}
+        }
+        return str1;
+    }       
 
-    public static String decryptCaesar(String message) {
-        return message;
-        // REPLACE THIS WITH YOUR CODE
+
+    public static String decryptCaesar(String message) {    
+    char ch = ' ';
+    String str1 = "";
+    for(int i = 0; i < message.length(); i++) {
+    	if((message.charAt(i)>= 'A' && message.charAt(i)<= 'Z') || (message.charAt(i)>= 'a' && message.charAt(i)<= 'z')){
+    		ch = (char) (message.charAt(i)-3);
+    		if ((ch<'a'&& ch>'Z')||ch<'A') {
+    			ch+=26;
+    		}
+    		str1 = str1 + ch;			
+    	}else {           
+    		str1 = str1 + message.charAt(i);
+    	}
+    }
+        return str1;
     }
 
     public static String encryptCaesarKey(String message, int key) {
-        return message;
-        // REPLACE THIS WITH YOUR CODE
+        char ch = ' ';
+        String str1 = "";
+        int k = key%26;
+		for(int i = 0; i < message.length(); i++) {
+            if((message.charAt(i)>= 'A' && message.charAt(i)<= 'Z') || (message.charAt(i)>= 'a' && message.charAt(i)<= 'z')){
+            ch = (char) (message.charAt(i)+k);
+            if (ch>'Z'&&ch<'a'||(ch>'z')) {
+            	ch-=26;
+            }
+			str1 = str1 + ch;			
+            }else {           
+            str1 = str1 + message.charAt(i);
+			}
+        }
+        return str1;
     }
 
     public static String decryptCaesarKey(String message, int key) {
-        return message;
-        // REPLACE THIS WITH YOUR CODE
+        char ch = ' ';
+        String str1 = "";
+        int k = key%26;
+		for(int i = 0; i < message.length(); i++) {
+            if((message.charAt(i)>= 'A' && message.charAt(i)<= 'Z') || (message.charAt(i)>= 'a' && message.charAt(i)<= 'z')){
+            ch = (char) (message.charAt(i)-k);
+            if ((ch<'a'&& ch>'Z')||ch<'A') {
+            	ch+=26;
+            }
+			str1 = str1 + ch;			
+            }else {           
+            str1 = str1 + message.charAt(i);
+			}
+        }
+        return str1;
     }
 
 
