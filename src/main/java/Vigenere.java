@@ -2,15 +2,30 @@ import java.util.Scanner;
 
 public class Vigenere {
     public static String encryptVigenere(String message, String key) {
-        return message;
-        // REPLACE THIS WITH YOUR CODE
-    }
-
-    public static String decryptVigenere(String message, String key) {
-        return message;
-        // REPLACE THIS WITH YOUR CODE
-    }
-
+        		char ch1=' ';
+		String str1 = "";
+		int i1 = 0 ;
+		for(int i = 0; i < message.length(); i++) {
+			int ch  = key.charAt(i1%3);
+            if(key.charAt(i1%3)<='Z' && key.charAt(i1%3)>='A'){
+                ch = key.charAt(i1%3)-65;
+            }
+            if(key.charAt(i1%3)<='z' && key.charAt(i1%3)>='a'){
+                ch = key.charAt(i1%3)-97;
+            }
+            if((message.charAt(i)>= 'A' && message.charAt(i)<= 'Z') || (message.charAt(i)>= 'a' && message.charAt(i)<= 'z')){
+            	ch1 = (char) (message.charAt(i)+ch);
+            	if (ch1>'Z'&&ch<'a'||(ch>'z')) {
+            		ch1-=26;
+            	}
+            	str1 = str1 + ch1;	
+            	i1++;		
+            }else {           
+           		str1 = str1 + message.charAt(i);
+            }        
+            }
+            return str1;
+        }
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
@@ -39,5 +54,9 @@ public class Vigenere {
         }
 
         scan.close();
+    }
+
+    public static char[] decryptVigenere(String message, String key) {
+        return null;
     }
 }
